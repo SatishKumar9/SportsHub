@@ -18,13 +18,14 @@
         {% if services %}
             <center><h2>Your API keys</h2>
             <p>You can change your API Keys for any service type anytime by clicking below...</p></center><br>
-            <ui style="list-style-type:disc;">
+            <div>
             {% for service in services %}
-                <li>{{ service.service_type.capitalize }} : &emsp; <span style="font-size: 20px">{{ service.token }}</span></li>
+                <div style="font-size:18px; float: left">{{ service.service_type.capitalize }} : &emsp;</div>
+                    <h6><input type="text" value="{{ service.token }}" id="myInput"><br></h6><br>
             {% endfor %}
-            </ui>
+            </div>
         {% else %}
-            <h3>Currently you have no API Keys. Choose one of our services below and click on one to get a free API Key for lifetime.</h3>
+            <h3>Currently you have no API Keys. Choose one of our services below and click on one to get an API Key</h3>
         {% endif %}
     </div>
 
@@ -69,5 +70,33 @@
 				</div>
             </div>
 		</div>
+
+{#        <script>#}
+{#            function myFunction() {#}
+{#              var copyText = document.getElementById("myInput");#}
+{#              copyText.select();#}
+{#              copyText.setSelectionRange(0, 99999);#}
+{#              document.execCommand("copy");#}
+{##}
+{#              var tooltip = document.getElementById("myTooltip");#}
+{#              tooltip.innerHTML = "Copied: " + copyText.value;#}
+{#            }#}
+{##}
+{#            function outFunc() {#}
+{#              var tooltip = document.getElementById("myTooltip");#}
+{#              tooltip.innerHTML = "Copy to clipboard";#}
+{#            }#}
+{#        </script>#}
+
+    <script>
+        function myFunction() {
+          var copyText = document.getElementById("myInput");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+          alert("Copied the text: " + copyText.value);
+        }
+    </script>
+
     <br><br><br>
 {% endblock %}
